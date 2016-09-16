@@ -57,4 +57,13 @@ public class ClothingItem {
     {
        comesAfter.add(name);
     }
+    public List<String> getComesBefore()
+    {
+        return comesBefore;
+    }
+    public List<String> getComesAfter()
+    {
+        return comesAfter;
+    }
+    
     }

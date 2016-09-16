@@ -42,7 +42,7 @@ public class FileReader {
             if(tempItem == null)
             {
                ClothingItem newItem = new ClothingItem(before);
-               //tempItem.comesBefore(after);
+               newItem.addBefore(after);
                clothingOrder.add(newItem);
             }
             else
@@ -57,7 +57,7 @@ public class FileReader {
             if(tempItem == null)
             {
                 ClothingItem newItem = new ClothingItem(after);
-               //tempItem.comesBefore(after);
+                newItem.addAfter(before);
                clothingOrder.add(newItem);
             }
             else 
@@ -68,8 +68,11 @@ public class FileReader {
         }
         read.close();
         for(ClothingItem i : clothingOrder){
-            System.out.println(i.getName());
+            System.out.println(i.getName()+"\nAfter:"+i.getComesAfter().toString()+"\nBefore:"+i.getComesBefore().toString()+"\n");
         }
+        OrderedPrint newPrint = new OrderedPrint();
+        newPrint.printClothingOrder(clothingOrder);
+        
     }
 
 }
