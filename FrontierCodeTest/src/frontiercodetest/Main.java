@@ -6,7 +6,11 @@
 package frontiercodetest;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,9 +23,19 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.print("Enter file location:");
+        System.out.print("The current working directory is:"+ System.getProperty("user.dir"));
+        //System.out.print("Enter file location:");
+        //System.in();
+        //TODO allow user to change the file and path take into account the OS separators / or \
+        //may be able to check the OS and raplace if inputted incorrectly
         
-        BufferedReader buffReader = new BufferedReader(new InputStreamReader(System.in));
+        FileReader fReader = new FileReader();
+        try {
+            fReader.openFile(System.getProperty("user.dir")+"\\InputFiles", "clothing.txt");
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
