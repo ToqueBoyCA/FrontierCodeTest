@@ -25,7 +25,7 @@ public class Main {
     public static void main(String[] args) {
 
         String fileName = null;
-        String filePath = System.getProperty("user.dir") + "\\InputFiles";
+        String filePath = System.getProperty("user.dir") +File.separator+ "InputFiles";
         System.out.println("Please place the file in the following path:");
         System.out.println(filePath);
         do {

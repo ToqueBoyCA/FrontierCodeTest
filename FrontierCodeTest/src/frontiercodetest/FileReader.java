@@ -34,6 +34,8 @@ public class FileReader {
             while (read.hasNext()) {
                 before = read.next();
                 after = read.next();
+                //Issue with inputs from Win to OSX›
+                after = after.replaceAll("\\r","");
                 //debugging                
                 //System.out.println("before:"+before+" after:"+after);
 
@@ -64,12 +66,11 @@ public class FileReader {
             }
         }
         //debugging system out
-        /**
-         * for(ListItem i : itemOrder){
-         * System.out.println(i.getName()+"\nAfter:"+i.getComesAfter().toString()+"\nBefore:"+i.getComesBefore().toString()+"\n");
-         * }
-        *
-         */
+        
+//         for(ListItem i : itemOrder){
+//         System.out.println(i.getName()+"\nAfter:"+i.getComesAfter().toString()+"\nBefore:"+i.getComesBefore().toString()+"\n");
+//         }
+        
         OrderedPrint newPrint = new OrderedPrint();
         newPrint.printListingOrder(itemOrder);
 
