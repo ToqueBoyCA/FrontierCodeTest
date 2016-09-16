@@ -15,4 +15,4 @@ belt->suit jacket
 suit jacket->overcoat
 dress shirt->tie
 suit jacket->sun glasses
-sun glasses->overcoat
+sun glasses->overcoat

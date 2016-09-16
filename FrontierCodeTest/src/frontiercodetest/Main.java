@@ -5,38 +5,44 @@
  */
 package frontiercodetest;
 
-import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Scanner;
 
 /**
  *
- * @author Shawn
+ * @author Shawn Smith
  */
 public class Main {
 
     /**
+     * Program entry - allows the user to define the filename to be used with
+     * the program. TODO - Let the user set the path, use a swing component to
+     * provide a GUI
+     *
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        System.out.print("The current working directory is:"+ System.getProperty("user.dir"));
-        //System.out.print("Enter file location:");
-        //System.in();
-        //TODO allow user to change the file and path take into account the OS separators / or \
-        //may be able to check the OS and raplace if inputted incorrectly
-        
-        FileReader fReader = new FileReader();
-        try {
-            fReader.openFile(System.getProperty("user.dir")+"\\InputFiles", "clothing.txt");
 
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        String fileName = null;
+        String filePath = System.getProperty("user.dir") + "\\InputFiles";
+        System.out.println("Please place the file in the following path:");
+        System.out.println(filePath);
+        do {
+            System.out.println("Enter the file name (including extention):");
+            Scanner userInput = new Scanner(System.in);
+            fileName = userInput.next();
+            String fullyQualifiedPath = filePath + File.separator + fileName;
+            FileReader fReader = new FileReader();
+            try {
+                fReader.openFile(fullyQualifiedPath);
+
+            } catch (FileNotFoundException ex) {
+                System.out.println("ERROR: File Not found");
+                System.out.println("Please check that the file is in the folder and try again");
+                fileName = null;
+            }
+        } while (fileName == null);
     }
-    
+
 }
